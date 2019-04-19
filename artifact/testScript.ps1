@@ -1,5 +1,5 @@
 #Download Selenium Node Startup files
-mkdir C:\Selenium
+mkdir C:\selenium
 $url = "https://nitrix.blob.core.windows.net/selenium/Selenium%20Node%20Startup.zip"
 $output = "C:\SeleniumGridSetup\SeleniumNodeStartup.zip"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
