@@ -31,14 +31,13 @@ Register-ScheduledTask startNode -InputObject $D
 
 #Download and install firefox
 $url = "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"
-$output = "C:\Users\TestUser\Documents\FirefoxSetup.exe"
+$output = "C:\FirefoxSetup.exe"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
-Start-Process -FilePath C:\Users\TestUser\Documents\FirefoxSetup.exe -ArgumentList "/S"
+Start-Process -FilePath C:\FirefoxSetup.exe -ArgumentList "/S"
 
 
 #Download and install chrome
 $url = "http://dl.google.com/chrome/install/375.126/chrome_installer.exe"
-$output = "C:\Users\TestUser\Documents\ChromeSetup.exe"
+$output = "C:\ChromeSetup.exe"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
-.\ChromeSetup.exe
-
+Start-Process -FilePath C:\ChromeSetup.exe
