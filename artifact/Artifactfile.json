@@ -5,6 +5,6 @@
     "publisher": "Microsoft",
     "targetOsType": "Windows",
     "runCommand": {
-        "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted \"& ./GridDeployer.ps1 ', '\"')]"
+        "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted \"& ./testScript.ps1 ', '\"')]"
     }
 }
