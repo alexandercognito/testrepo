@@ -5,9 +5,9 @@ $output = "C:\Selenium\SeleniumHubStartup.zip"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
 Expand-Archive -Path C:\Selenium\SeleniumHubStartup.zip -DestinationPath C:\Selenium
 
-Move-Item -Path C:\Selenium\Selenium Hub Startup\hubConfig.json -Destination C:\Selenium\hubConfig.json
-Move-Item -Path C:\Selenium\Selenium Hub Startup\hub-start.cmd -Destination C:\Selenium\hub-start.cmd
-Move-Item -Path C:\Selenium\Selenium Hub Startup\selenium-server-standalone-3.11.0.jar -Destination C:\Selenium\selenium-server-standalone-3.11.0.jar
+Move-Item -Path 'C:\Selenium\Selenium Hub Startup\hubConfig.json' -Destination C:\Selenium\hubConfig.json
+Move-Item -Path 'C:\Selenium\Selenium Hub Startup\hub-start.cmd' -Destination C:\Selenium\hub-start.cmd
+Move-Item -Path 'C:\Selenium\Selenium Hub Startup\selenium-server-standalone-3.11.0.jar' -Destination C:\Selenium\selenium-server-standalone-3.11.0.jar
 
 #Schedule Selenium Start Node task to start at system start up
 $A = New-ScheduledTaskAction -Execute "C:\Selenium\hub-start.cmd"
