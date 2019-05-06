@@ -1,7 +1,7 @@
 #Download Selenium Node Startup files
 mkdir C:\Selenium
 $url = "https://nitrix.blob.core.windows.net/selenium/Selenium%20Node%20Startup.zip"
-$output = "C:\SeleniumGridSetup\SeleniumNodeStartup.zip"
+$output = "C:\Selenium\SeleniumNodeStartup.zip"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
 Expand-Archive -Path C:\Selenium\SeleniumNodeStartup.zip -DestinationPath C:\Selenium
 
@@ -44,8 +44,8 @@ $output = "C:\Users\TestUser\Documents\ChromeSetup.exe"
 
 #Set path to java.exe in cmd file
 $javapath = ((Get-Item "C:/Program Files/Java/*/bin/java.exe" | Resolve-Path) -replace '.*C:', 'C:')
-(Get-Content -path C:\SeleniumGridSetup\selenium-start-node-3.5.2.cmd -Raw) -replace 'C..Program Files.Java.jre1.8.0.....bin.java.exe', 
-	$javapath | Set-Content -Path C:\SeleniumGridSetup\selenium-start-node-3.5.2.cmd
+(Get-Content -path C:\Selenium\selenium-start-node-3.5.2.cmd -Raw) -replace 'C..Program Files.Java.jre1.8.0.....bin.java.exe', 
+	$javapath | Set-Content -Path C:\Selenium\selenium-start-node-3.5.2.cmd
 
 #Set name of selenium hub in cmd file	
-(Get-Content -path C:\SeleniumGridSetup\selenium-start-node-3.5.2.cmd -Raw) -replace 'seleniumhub', 'selenium2hub' | Set-Content -Path C:\SeleniumGridSetup\selenium-start-node-3.5.2.cmd
+(Get-Content -path C:\Selenium\selenium-start-node-3.5.2.cmd -Raw) -replace 'seleniumhub', 'selenium2hub' | Set-Content -Path C:\Selenium\selenium-start-node-3.5.2.cmd
