@@ -49,3 +49,5 @@ $javapath = ((Get-Item "C:/Program Files/Java/*/bin/java.exe" | Resolve-Path) -r
 
 #Set name of selenium hub in cmd file	
 (Get-Content -path C:\Selenium\selenium-start-node-3.5.2.cmd -Raw) -replace 'seleniumhub', 'selenium2hub' | Set-Content -Path C:\Selenium\selenium-start-node-3.5.2.cmd
+
+Invoke-Item "C:\Selenium\selenium-start-node-3.5.2.cmd"
