@@ -20,3 +20,5 @@ Register-ScheduledTask startHub -InputObject $D
 $javapath = ((Get-Item "C:/Program Files/Java/*/bin/java.exe" | Resolve-Path) -replace '.*C:', 'C:')
 (Get-Content -path C:\Selenium\hub-start.cmd -Raw) -replace 'C..Program Files.Java.jre1.8.0.....bin.java.exe', 
 	$javapath | Set-Content -Path C:\Selenium\hub-start.cmd
+
+Invoke-Item "C:\Selenium\hub-start.cmd"
