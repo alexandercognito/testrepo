@@ -1,6 +1,14 @@
+New-Item -Path "c:\" -Name "Selenium" -ItemType "directory"
+
 $url = "https://nitrix.blob.core.windows.net/selenium/Selenium%20Node%20Startup.zip"
 $output = "C:\Selenium\SeleniumNodeStartup.zip"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
+Start-Sleep -s 3
+If (-NOT([System.IO.File]::Exists($output)))
+{
+    (New-Object System.Net.WebClient).DownloadFile($url, $output)
+    Start-Sleep -s 3
+}
 Expand-Archive -Path C:\Selenium\SeleniumNodeStartup.zip -DestinationPath C:\Selenium
 
 
@@ -9,6 +17,12 @@ mkdir C:\tools\selenium
 $url = "https://chromedriver.storage.googleapis.com/74.0.3729.6/chromedriver_win32.zip"
 $output = "C:\tools\selenium\chromedriver.zip"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
+Start-Sleep -s 3
+If (-NOT([System.IO.File]::Exists($output)))
+{
+    (New-Object System.Net.WebClient).DownloadFile($url, $output)
+    Start-Sleep -s 3
+}
 Expand-Archive -Path C:\tools\selenium\chromedriver.zip -DestinationPath C:\tools\selenium\
 
 
@@ -16,6 +30,12 @@ Expand-Archive -Path C:\tools\selenium\chromedriver.zip -DestinationPath C:\tool
 $url = "https://goo.gl/9Cqa4q"
 $output = "C:\tools\selenium\IEDriverServer.zip"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
+Start-Sleep -s 3
+If (-NOT([System.IO.File]::Exists($output)))
+{
+    (New-Object System.Net.WebClient).DownloadFile($url, $output)
+    Start-Sleep -s 3
+}
 Expand-Archive -Path C:\tools\selenium\IEDriverServer.zip -DestinationPath C:\tools\selenium\
 
 
@@ -31,6 +51,12 @@ Register-ScheduledTask startNode -InputObject $D
 $url = "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US"
 $output = "C:\Users\TestUser\Documents\FirefoxSetup.exe"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
+Start-Sleep -s 3
+If (-NOT([System.IO.File]::Exists($output)))
+{
+    (New-Object System.Net.WebClient).DownloadFile($url, $output)
+    Start-Sleep -s 3
+}
 Start-Process -FilePath C:\Users\TestUser\Documents\FirefoxSetup.exe -ArgumentList "/S"
 
 
@@ -38,6 +64,12 @@ Start-Process -FilePath C:\Users\TestUser\Documents\FirefoxSetup.exe -ArgumentLi
 $url = "http://dl.google.com/chrome/install/375.126/chrome_installer.exe"
 $output = "C:\Users\TestUser\Documents\ChromeSetup.exe"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
+Start-Sleep -s 3
+If (-NOT([System.IO.File]::Exists($output)))
+{
+    (New-Object System.Net.WebClient).DownloadFile($url, $output)
+    Start-Sleep -s 3
+}
 Start-Process -FilePath C:\Users\TestUser\Documents\ChromeSetup.exe
 
 #Set path to java.exe in cmd file
