@@ -50,4 +50,6 @@ $javapath = ((Get-Item "C:/Program Files/Java/*/bin/java.exe" | Resolve-Path) -r
 #Set name of selenium hub in cmd file	
 (Get-Content -path C:\Selenium\selenium-start-node-3.5.2.cmd -Raw) -replace 'seleniumhub', 'selenium2hub' | Set-Content -Path C:\Selenium\selenium-start-node-3.5.2.cmd
 
+New-NetFirewallRule -DisplayName "AllowTCP5555" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 5555
+
 Invoke-Item "C:\Selenium\selenium-start-node-3.5.2.cmd"
