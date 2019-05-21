@@ -1,5 +1,3 @@
-#Download Selenium Node Startup files
-mkdir C:\Selenium
 $url = "https://nitrix.blob.core.windows.net/selenium/Selenium%20Node%20Startup.zip"
 $output = "C:\Selenium\SeleniumNodeStartup.zip"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
@@ -40,7 +38,7 @@ Start-Process -FilePath C:\Users\TestUser\Documents\FirefoxSetup.exe -ArgumentLi
 $url = "http://dl.google.com/chrome/install/375.126/chrome_installer.exe"
 $output = "C:\Users\TestUser\Documents\ChromeSetup.exe"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)
-.\ChromeSetup.exe
+Start-Process -FilePath C:\Users\TestUser\Documents\ChromeSetup.exe
 
 #Set path to java.exe in cmd file
 $javapath = ((Get-Item "C:/Program Files/Java/*/bin/java.exe" | Resolve-Path) -replace '.*C:', 'C:')
@@ -50,6 +48,14 @@ $javapath = ((Get-Item "C:/Program Files/Java/*/bin/java.exe" | Resolve-Path) -r
 #Set name of selenium hub in cmd file	
 (Get-Content -path C:\Selenium\selenium-start-node-3.5.2.cmd -Raw) -replace 'seleniumhub', 'selenium2hub' | Set-Content -Path C:\Selenium\selenium-start-node-3.5.2.cmd
 
+#Open port in firewall
 New-NetFirewallRule -DisplayName "AllowTCP5555" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 5555
+
+#Kill task
+taskkill /IM "java.exe" /F
+taskkill /IM "SeleniumGridSetupService.exe" /F
+
+#Delete folder
+Remove-Item –path c:\SeleniumGridSetup –recurse
 
 Invoke-Item "C:\Selenium\selenium-start-node-3.5.2.cmd"
