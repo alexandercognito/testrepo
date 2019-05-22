@@ -1,4 +1,4 @@
-New-Item -Path "c:\" -Name "Selenium" -ItemType "directory"
+New-Item -Path "C:\" -Name "Selenium" -ItemType "directory"
 
 $url = "https://nitrix.blob.core.windows.net/selenium/Selenium%20Node%20Startup.zip"
 $output = "C:\Selenium\SeleniumNodeStartup.zip"
@@ -105,6 +105,6 @@ taskkill /IM "java.exe" /F
 taskkill /IM "SeleniumGridSetupService.exe" /F
 
 #Delete folder
-Remove-Item –path "c:\SeleniumGridSetup" –recurse
+Remove-Item –path "C:\SeleniumGridSetup" –recurse
 
 Invoke-Item "C:\Selenium\selenium-start-node-3.5.2.cmd"
