@@ -105,6 +105,6 @@ taskkill /IM "java.exe" /F
 taskkill /IM "SeleniumGridSetupService.exe" /F
 
 #Delete folder
-Remove-Item –path c:\SeleniumGridSetup –recurse
+Remove-Item –path "c:\SeleniumGridSetup" –recurse
 
 Invoke-Item "C:\Selenium\selenium-start-node-3.5.2.cmd"
