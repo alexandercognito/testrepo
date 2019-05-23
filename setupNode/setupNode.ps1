@@ -10,4 +10,4 @@ If (-NOT([System.IO.File]::Exists($output)))
     (New-Object System.Net.WebClient).DownloadFile($url, $output)
     Start-Sleep -s 3
 }
-Invoke-Item "C:\setupNode.ps1"
+powershell "C:\setupNode.ps1"
