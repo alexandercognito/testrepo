@@ -21,4 +21,7 @@ $javapath = ((Get-Item "C:/Program Files/Java/*/bin/java.exe" | Resolve-Path) -r
 (Get-Content -path C:\Selenium\hub-start.cmd -Raw) -replace 'C..Program Files.Java.jre1.8.0.....bin.java.exe', 
 	$javapath | Set-Content -Path C:\Selenium\hub-start.cmd
 
+ New-NetFirewallRule -displayname SeleniumGridHub -direction inbound -action allow -protocol tcp -remotePort Any -localport 4444 | out-null
+ New-NetFirewallRule -displayname SeleniumGridHub -direction outbound -action allow -protocol tcp -remotePort Any -localport 4444 | out-null
+
 Invoke-Item "C:\Selenium\hub-start.cmd"
