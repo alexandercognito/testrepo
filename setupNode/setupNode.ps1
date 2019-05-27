@@ -4,7 +4,7 @@ New-NetFirewallRule -displayname SeleniumGridNode -direction outbound -action al
 #Schedule Selenium Start Node task to start at system start up
 If (-NOT(Get-ScheduledTask | Where-Object {$_.TaskName -like "startNode"})) {
 	$A = New-ScheduledTaskAction -Execute "C:\Selenium\selenium-start-node-3.5.2.cmd"
-	$T = New-ScheduledTaskTrigger -AtStartup
+	$T = New-ScheduledTaskTrigger -AtLogOn "Selenium2Node\TestUser"
 	$P = New-ScheduledTaskPrincipal "SYSTEM"
 	$D = New-ScheduledTask -Action $A -Trigger $T -Principal $P
 	Register-ScheduledTask startNode -InputObject $D
