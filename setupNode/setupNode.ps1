@@ -1,8 +1,8 @@
 New-NetFirewallRule -displayname SeleniumGridNode -direction inbound -action allow -protocol tcp -remotePort Any -localport 5555 | out-null
 New-NetFirewallRule -displayname SeleniumGridNode -direction outbound -action allow -protocol tcp -remotePort Any -localport 5555 | out-null
 
-$usrname = 'DOMAINNAME\SAMACCOUNTNAME'
-$password = 'PASSWORD'
+$usrname = 'TestUser'
+$password = 'Snowflake123'
 $RegistryLocation = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
 Set-ItemProperty $RegistryLocation -Name 'AutoAdminLogon' -Value '1'
 Set-ItemProperty $RegistryLocation -Name 'DefaultUsername' -Value "$usrname"
