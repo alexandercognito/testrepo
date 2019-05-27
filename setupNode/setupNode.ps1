@@ -2,13 +2,11 @@ New-NetFirewallRule -displayname SeleniumGridNode -direction inbound -action all
 New-NetFirewallRule -displayname SeleniumGridNode -direction outbound -action allow -protocol tcp -remotePort Any -localport 5555 | out-null
 
 #Schedule Selenium Start Node task to start at system start up
-If (-NOT(Get-ScheduledTask | Where-Object {$_.TaskName -like "startNode"})) {
-	$A = New-ScheduledTaskAction -Execute "C:\Selenium\selenium-start-node-3.5.2.cmd"
-	$T = New-ScheduledTaskTrigger -AtLogOn "Selenium2Node\TestUser"
-	$P = New-ScheduledTaskPrincipal "SYSTEM"
-	$D = New-ScheduledTask -Action $A -Trigger $T -Principal $P
-	Register-ScheduledTask startNode -InputObject $D
-}
+$A = New-ScheduledTaskAction -Execute "C:\Selenium\selenium-start-node-3.5.2.cmd"
+$T = New-ScheduledTaskTrigger -AtLogon
+$P = New-ScheduledTaskPrincipal "SYSTEM"
+$D = New-ScheduledTask -Action $A -Trigger $T -Principal $P
+Register-ScheduledTask startNode -InputObject $D
 
 $usrname = 'TestUser'
 $password = 'Snowflake123'
