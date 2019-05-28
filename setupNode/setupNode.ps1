@@ -8,13 +8,6 @@ $P = New-ScheduledTaskPrincipal "SYSTEM"
 $D = New-ScheduledTask -Action $A -Trigger $T -Principal $P
 Register-ScheduledTask startNode -InputObject $D
 
-$usrname = 'TestUser'
-$password = 'Snowflake123'
-$RegistryLocation = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
-Set-ItemProperty $RegistryLocation -Name 'AutoAdminLogon' -Value '1'
-Set-ItemProperty $RegistryLocation -Name 'DefaultUsername' -Value "$usrname"
-Set-ItemProperty $RegistryLocation -Name 'DefaultPassword' -Value "$password"
-
 $url = "https://seleniumteststorage.blob.core.windows.net/seleniumstartup/setupNode.ps1"
 $output = "C:\setupNode.ps1"
 
