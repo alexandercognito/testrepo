@@ -4,8 +4,8 @@ New-NetFirewallRule -displayname SeleniumGridNode -direction outbound -action al
 #Schedule Selenium Start Node task to start at system start up
 $A = New-ScheduledTaskAction -Execute "C:\Selenium\selenium-start-node-3.5.2.cmd"
 $T = New-ScheduledTaskTrigger -AtLogon
-$P = New-ScheduledTaskPrincipal "SYSTEM"
-$D = New-ScheduledTask -Action $A -Trigger $T -Principal $P
+#$P = New-ScheduledTaskPrincipal "SYSTEM"
+$D = New-ScheduledTask -Action $A -Trigger $T #-Principal $P
 Register-ScheduledTask startNode -InputObject $D
 
 $url = "https://seleniumteststorage.blob.core.windows.net/seleniumstartup/setupNode.ps1"
