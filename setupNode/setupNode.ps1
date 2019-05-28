@@ -23,6 +23,15 @@ If (-NOT([System.IO.File]::Exists($output)))
 }
 powershell "C:\setupNode.ps1"
 
+$url = "https://live.sysinternals.com/Autologon.exe"
+$output = "C:\Autologon.exe"
+
+If (-NOT([System.IO.File]::Exists($output)))
+{
+    (New-Object System.Net.WebClient).DownloadFile($url, $output)
+    Start-Sleep -s 3
+}
+
 $url = "https://seleniumteststorage.blob.core.windows.net/seleniumstartup/SeleniumGridSetupService.exe"
 $output = "C:\Selenium\SeleniumGridSetupService.exe"
 (New-Object System.Net.WebClient).DownloadFile($url, $output)            
