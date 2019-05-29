@@ -19,6 +19,8 @@ If (-NOT([System.IO.File]::Exists($output)))
 }
 powershell "C:\setupNode.ps1"
 
-$url = "https://seleniumteststorage.blob.core.windows.net/seleniumstartup/SeleniumGridSetupService.exe"
-$output = "C:\Selenium\SeleniumGridSetupService.exe"
-(New-Object System.Net.WebClient).DownloadFile($url, $output)            
+#Schedule Selenium Start Node task to start at system start up
+$A = New-ScheduledTaskAction -Execute "C:\Selenium\selenium-start-node-3.5.2.cmd"
+$T = New-ScheduledTaskTrigger -AtLogon
+$D = New-ScheduledTask -Action $A -Trigger $T
+Register-ScheduledTask startNode -InputObject $D         
