@@ -1,5 +1,5 @@
 param(
-    [int] $VMNumber = 1
+    [int] $NodeNumber = 1
 )
 
 New-NetFirewallRule -displayname SeleniumGridNode -direction inbound -action allow -protocol tcp -remotePort Any -localport 5555 | out-null
@@ -17,7 +17,7 @@ If (-NOT([System.IO.File]::Exists($output)))
     (New-Object System.Net.WebClient).DownloadFile($url, $output)
     Start-Sleep -s 3
 }
-powershell "C:\setupNode.ps1"
+powershell "C:\setupNode.ps1" -NodeNumber $NodeNumber
 
 #Schedule Selenium Start Node task to start at system start up
 $A = New-ScheduledTaskAction -Execute "C:\Selenium\selenium-start-node-3.5.2.cmd"
