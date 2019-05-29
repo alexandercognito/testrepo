@@ -1,5 +1,5 @@
 param(
-    [int] $AutoLogonNumber = 1
+    [int] $VMNumber = 1
 )
 
 New-NetFirewallRule -displayname SeleniumGridNode -direction inbound -action allow -protocol tcp -remotePort Any -localport 5555 | out-null
