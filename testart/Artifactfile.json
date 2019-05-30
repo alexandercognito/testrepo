@@ -5,6 +5,6 @@
     "publisher": "Microsoft",
     "targetOsType": "Windows",
     "runCommand": {
-        "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted \"& ./setupHub.ps1 ', '\"')]"
+        "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted \"& ./test.ps1 ', '\"')]"
     }
 }
